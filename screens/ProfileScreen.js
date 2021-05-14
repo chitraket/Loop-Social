@@ -9,13 +9,25 @@ import {
   SafeAreaView,
   Alert,
 } from 'react-native';
-import FormButton from '../components/FormButton';
 import {AuthContext} from '../navigation/AuthProvider';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import firestore from '@react-native-firebase/firestore';
 import PostCard from '../components/PostCard';
+import Share from 'react-native-share';
 
 const ProfileScreen = ({navigation, route}) => {
+  const myCustomShare = async () => {
+    const shareOptions = {
+      message:'Best chat app.',
+    }
+   
+    try{
+      const ShareResponse = await Share.open(shareOptions);
+    }catch(error){
+      console.log(error);
+    }
+  }
   const {user, logout} = useContext(AuthContext);
 
   const [posts, setPosts] = useState([]);
@@ -65,8 +77,6 @@ const ProfileScreen = ({navigation, route}) => {
       if (loading) {
         setLoading(false);
       }
-
-      console.log('Posts: ', posts);
     } catch (e) {
       console.log(e);
     }
@@ -201,12 +211,22 @@ const ProfileScreen = ({navigation, route}) => {
             <Text style={styles.userInfoTitle}>{posts.length}</Text>
             <Text style={styles.userInfoSubTitle}>Posts</Text>
           </View>
-          <View style={styles.userInfoItem}>
+          {/* <View style={styles.userInfoItem}>
             <Text style={styles.userInfoTitle}>10,000</Text>
             <Text style={styles.userInfoSubTitle}>Followers</Text>
           </View>
           <View style={styles.userInfoItem}>
             <Text style={styles.userInfoTitle}>100</Text>
+            <Text style={styles.userInfoSubTitle}>Following</Text>
+          </View> */}
+          <View style={styles.userInfoItem}>
+            <TouchableOpacity onPress={()=>myCustomShare}>
+            <Text style={styles.userInfoTitle}> <Ionicons name={"ios-share-social"} size={25} color={"#E94464"} /></Text>
+            <Text style={styles.userInfoSubTitle}>Tell Your Friends</Text>
+            </TouchableOpacity>
+          </View>
+          <View style={styles.userInfoItem}>
+            <Text style={styles.userInfoTitle}>200</Text>
             <Text style={styles.userInfoSubTitle}>Following</Text>
           </View>
         </View>

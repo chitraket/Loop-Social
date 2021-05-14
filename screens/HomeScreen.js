@@ -129,7 +129,7 @@ const HomeScreen = ({navigation}) => {
         setLoading(false);
       }
 
-      console.log('Posts: ', posts);
+      // console.log('Posts: ', posts);
     } catch (e) {
       console.log(e);
     }
@@ -211,12 +211,6 @@ const HomeScreen = ({navigation}) => {
   };
   return (
       <View style={styles.constainer}>
-        <View style={styles.header}>
-          <Text style={styles.headerTitle}>Cool Social</Text>
-          <TouchableOpacity style={styles.back} onPress={()=>navigation.navigate("AddPost")}>
-              <Ionicons name="ios-add-sharp" size={25} color="#444" />
-            </TouchableOpacity>
-        </View>
       {loading ? (
         <ScrollView
           style={{flex: 1}}
@@ -263,6 +257,7 @@ const HomeScreen = ({navigation}) => {
           </SkeletonPlaceholder>
         </ScrollView>
       ) : (
+
           <FlatList
           style={styles.feed}
             data={posts}
@@ -289,28 +284,17 @@ export default HomeScreen;
 const styles = StyleSheet.create({
   container:{
     flex:1,
-    backgroundColor:"#EFECF4"
+    backgroundColor:"#EFECF4",
   },
-  header:{
-    paddingTop:64,
-    paddingBottom:16,
-    backgroundColor:'#FFF',
-    alignItems:'center',
-    justifyContent:'center',
-    borderBottomWidth:1,
-    borderBottomColor:"#EBECF4",
-    shadowColor:"#454D65",
-    shadowOffset:{height:5},
-    shadowRadius:15,
-    shadowOpacity:0.2,
-    zIndex:10
-  },
+ 
   headerTitle:{
     fontSize:20,
     fontWeight:"500"
   },
 feed:{
-  marginHorizontal:16
+  marginHorizontal:16,
+  paddingTop:10,
+  paddingBottom:-100,
 },
 back:{
   position:'absolute',

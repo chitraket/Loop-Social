@@ -1,8 +1,7 @@
 import React from 'react';
-import {View, TouchableOpacity, Text,Image} from 'react-native';
+import {View, TouchableOpacity, Text,Image, StyleSheet} from 'react-native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import {
@@ -28,31 +27,36 @@ const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
 const FeedStack = ({navigation}) => (
-  <Stack.Navigator>
+  <Stack.Navigator
+  
+  >
     <Stack.Screen
       name="Cools Social"
       component={HomeScreen}
-      // options={{
-      //   headerShown: true,
-      //   headerTitleAlign: 'center',
-      //   headerTitleStyle: {
-      //     color: '#2e64e5',
-      //     fontSize: 18,
-      //   },
-      options={{header: () => null}}
-        
-      //   headerRight: () => (
-      //     <View style={{marginRight: 10}}>
-      //       <FontAwesome5.Button
-      //         name="plus"
-      //         size={22}
-      //         backgroundColor="#fff"
-      //         color="#2e64e5"
-      //         onPress={() => navigation.navigate('AddPost')}
-      //       />
-      //     </View>
-      //   ),
-      // }}
+      options={{
+      headerStyle:{
+          elevation:0,
+          backgroundColor:'#fff',
+          ...styles.header
+        },
+        headerTitleAlign: 'center',
+        headerTitleStyle: {
+          color: "#E94464",
+          fontSize: 18,
+        },
+        headerRight: () => (
+          <View style={{marginRight: 10}}>
+            <FontAwesome5.Button
+              name="plus"
+              size={22}
+              backgroundColor="#fff"
+              color="#E94464"
+              onPress={() => navigation.navigate('AddPost')}
+            />
+          </View>
+        ),
+      }}
+      
     />
     <Stack.Screen
       name="AddPost"
@@ -97,7 +101,20 @@ const FeedStack = ({navigation}) => (
 
 const MessageStack = ({navigation}) => (
   <Stack.Navigator>
-    <Stack.Screen name="Messages" component={MessagesScreen} />
+    <Stack.Screen name="Messages" component={MessagesScreen} 
+    options={{
+      headerStyle:{
+          elevation:0,
+          backgroundColor:'#fff',
+          ...styles.header
+        },
+        headerTitleAlign: 'center',
+        headerTitleStyle: {
+          color: "#E94464",
+          fontSize: 18,
+        },
+      }}
+    />
     <Stack.Screen
       name="Chat"
       component={ChatScreen}
@@ -167,6 +184,13 @@ const AppStack = () => {
         activeTintColor: '#161F3D',
         inactiveTintColor:'#B8BBC4',
         showLabel:false,
+        style:{
+          position:'absolute',
+          elevation:0,
+          backgroundColor:'#fff',
+          height:80,
+         ...styles.header
+        }
       }}>
       <Tab.Screen
         name="Home"
@@ -175,11 +199,13 @@ const AppStack = () => {
           tabBarLabel: 'Home',
           // tabBarVisible: route.state && route.state.index === 0,
           tabBarIcon: ({color, size}) => (
+            <View style={{alignItems:'center',justifyContent:'center',top:10}}>
             <Ionicons
               name="ios-home"
               color={color}
               size={size}
             />
+            </View>
           ),
         })}
       />
@@ -193,11 +219,13 @@ const AppStack = () => {
           // tabBarVisible: route.state && route.state.index === 0,
           // tabBarLabel: 'Home',
           tabBarIcon: ({color, size}) => (
+            <View style={{alignItems:'center',justifyContent:'center',top:10}}>
             <Ionicons
               name="ios-chatbubbles"
               color={color}
               size={size}
             />
+            </View>
           ),
         })}
       />
@@ -207,7 +235,9 @@ const AppStack = () => {
         options={{
           // tabBarLabel: 'Home',
           tabBarIcon: ({color, size}) => (
+            <View style={{alignItems:'center',justifyContent:'center',top:10}}>
             <Ionicons name="ios-person" color={color} size={size} />
+            </View>
           ),
         }}
       />
@@ -215,4 +245,14 @@ const AppStack = () => {
   );
 };
 
+const styles = StyleSheet.create({
+  header:{
+    borderBottomWidth:1,
+    borderBottomColor:"#EBECF4",
+    shadowColor:"#454D65",
+    shadowOffset:{height:5},
+    shadowRadius:15,
+    shadowOpacity:0.2,
+  },
+})
 export default AppStack;

@@ -31,7 +31,7 @@ const Routes = () => {
   if (initializing) return null;
 
   return (
-    <NavigationContainer>
+    <NavigationContainer >
       {user ? <AppStack /> : <AuthStack />}
     </NavigationContainer>
   );

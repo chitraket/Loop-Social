@@ -22,7 +22,6 @@ const MessagesScreen = ({navigation}) => {
   const getUsers = async ()=> {
     const querySanp = await firestore().collection('users').where('uid','!=',user.uid).get();
     const allusers =  querySanp.docs.map(docSnap => docSnap.data())
-    console.log(allusers);
     setUsers(allusers)
   }
   useEffect(()=>{
