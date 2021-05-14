@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "593033014388",
+    "project_id": "loop-social-dbed0",
+    "storage_bucket": "loop-social-dbed0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:593033014388:android:394ffaef00aae8166c3521",
+        "android_client_info": {
+          "package_name": "com.loopsocial"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "593033014388-0jmruafp1mu5dti42hi13slrr4tqn1n2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDYh98Zzg29e43iUt3Md40BMPIBmFhOcNw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "593033014388-0jmruafp1mu5dti42hi13slrr4tqn1n2.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "593033014388-oj1ra1mcqr66vtn469sckh67ur8165j4.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.loopsocial"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
